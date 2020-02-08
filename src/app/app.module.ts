@@ -15,6 +15,11 @@ import { AuthLayoutComponent } from './dashboard/layouts/auth-layout/auth-layout
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestComponent } from './sharedComponent/test/test.component';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +37,9 @@ import { TestComponent } from './sharedComponent/test/test.component';
     ComponentsModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
