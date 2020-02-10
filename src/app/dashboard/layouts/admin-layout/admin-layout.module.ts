@@ -14,6 +14,7 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CompaniesComponent } from '../../pages/companies/companies.component';
 import { AddCompanyComponent } from '../../pages/companies/add-company/add-company.component';
+import { UpdateCompanyComponent } from '../../pages/companies/update-company/update-company.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AddCompanyComponent } from '../../pages/companies/add-company/add-compa
     IconsComponent,
     MapsComponent,
     CompaniesComponent,
-    AddCompanyComponent
+    AddCompanyComponent,
+    UpdateCompanyComponent
   ]
 })
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Company } from 'src/app/entities/Company';
+import { SuperAdminServices } from 'src/app/services/UserService/SuperAdminServices';
 
 @Component({
   selector: 'app-add-company',
@@ -9,13 +10,13 @@ import { Company } from 'src/app/entities/Company';
 export class AddCompanyComponent implements OnInit {
 
   @Output() closing = new EventEmitter<boolean>();
-  @Output() added = new EventEmitter<boolean>();
-  company:Company;
-  constructor() { }
+ 
+  company:Company = new Company();
+  constructor(private superadminservices:SuperAdminServices) { }
 
   ngOnInit() {
     this.closing.emit(false);
-    this.added.emit(false);
+   
   }
 
   close() {
@@ -23,7 +24,12 @@ export class AddCompanyComponent implements OnInit {
   }
 
 
-  submitAddingPromotion() {
+  submitAdding() {
+    
+    this.superadminservices.addCompany(this.company);
+ 
+    this.closing.emit(true);
 // add
   }
+  
 }

@@ -1,6 +1,9 @@
 
  <ng-template #content1 let-modal1>
-  <app-add-company (closing)="closee($event)" (added)="formulairesubmited($event)"></app-add-company>
+  <app-add-company (closing)="closee($event)" ></app-add-company>
+</ng-template>
+<ng-template #content2 let-modal2>
+  <app-update-company (closing)="closee($event)" [company]="companytoupdate"  ></app-update-company>
 </ng-template>
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
   <div class="container-fluid">
@@ -19,83 +22,46 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Card tables</h3>
+          <h3 class="mb-0">Companies</h3>
         </div>
 
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Project</th>
-                <th scope="col">Budget</th>
-                <th scope="col">Status</th>
-                <th scope="col">Users</th>
-                <th scope="col">Completion</th>
-                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Outil</th>
+               
               </tr>
             </thead>
             <tbody>
 
               <!-- table content -->
-              <tr *ngFor="let x of x">
+              <tr *ngFor="let x of ListCompany | async">
                 <th scope="row">
                   <div class="media align-items-center">
                     <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
                       <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
                     </a>
                     <div class="media-body">
-                      <span class="mb-0 text-sm">Argon Design System</span>
+                      <span class="mb-0 text-sm">{{x.name}}</span>
                     </div>
                   </div>
                 </th>
                 <td>
-                  $2,500 USD
+                 {{ x.email}}
                 </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> pending
-                  </span>
-                </td>
-                <td>
-                  <div class="avatar-group">
-                    <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
-                      data-original-title="Ryan Tompson">
-                      <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg" class="rounded-circle">
-                    </a>
-                    <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
-                      data-original-title="Romina Hadid">
-                      <img alt="Image placeholder" src="../assets/img/theme/team-2-800x800.jpg" class="rounded-circle">
-                    </a>
-                    <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
-                      data-original-title="Alexander Smith">
-                      <img alt="Image placeholder" src="../assets/img/theme/team-3-800x800.jpg" class="rounded-circle">
-                    </a>
-                    <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip"
-                      data-original-title="Jessica Doe">
-                      <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
-                    </a>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">60%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                          aria-valuemax="100" style="width: 60%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
+             
+                
                 <td class="text-right">
                   <div ngbDropdown placement="bottom-right">
                     <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                      <a class="dropdown-item" href="javascript:void(0)" (click)="open2(content2,x)">Update</a>
+                      <a class="dropdown-item" href="javascript:void(0)"(click)="delete(x)">Delete</a>
                     </div>
                   </div>
                 </td>

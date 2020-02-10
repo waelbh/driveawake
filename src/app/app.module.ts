@@ -19,13 +19,15 @@ import { TestComponent } from './sharedComponent/test/test.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { UpdateCompanyComponent } from './dashboard/pages/companies/update-company/update-company.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    TestComponent
+    TestComponent,
+  
     
   ],
   imports: [

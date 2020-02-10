@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
+import { SuperAdminServices } from 'src/app/services/UserService/SuperAdminServices';
 
 @Component({
   selector: 'app-companies',
@@ -8,13 +10,32 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CompaniesComponent implements OnInit {
   closeResult: string;
-  constructor(private modalService: NgbModal) { }
+  ListCompany:Observable<any[]>;
+  companytoupdate:any;
+  constructor(private modalService: NgbModal,private superAdminServices:SuperAdminServices) {
+    this.ListCompany = this.superAdminServices.getCompanies();
+    console.log(this.ListCompany)
+   }
 
   ngOnInit() {
+    
+  }
+
+  delete(x){
+    console.log(x)
+    this.superAdminServices.deleteCompany(x);
   }
 
   open1(content) {
-    this.modalService.open(content, { ariaLabelledBy: 'modal1-basic-title' }).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  open2(content,x) {
+    this.companytoupdate = x;
+    this.modalService.open(content, { ariaLabelledBy: 'modal2-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -37,5 +58,9 @@ export class CompaniesComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+  formulairesubmited(){
+
+  }
+  
 
 }
