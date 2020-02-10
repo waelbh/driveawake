@@ -20,6 +20,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { UpdateCompanyComponent } from './dashboard/pages/companies/update-company/update-company.component';
+import { InsurancesComponent } from './pages/insurances/insurances.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UpdateCompanyComponent } from './dashboard/pages/companies/update-compa
     AdminLayoutComponent,
     AuthLayoutComponent,
     TestComponent,
+    InsurancesComponent,
   
     
   ],
