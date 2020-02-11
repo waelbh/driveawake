@@ -15,6 +15,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CompaniesComponent } from '../../pages/companies/companies.component';
 import { AddCompanyComponent } from '../../pages/companies/add-company/add-company.component';
 import { UpdateCompanyComponent } from '../../pages/companies/update-company/update-company.component';
+import { InsurancesComponent } from '../../pages/insurances/insurances.component';
+import { UpdateInsuranceComponent } from '../../pages/insurances/update-insurance/update-insurance.component';
+import { AddInsuranceComponent } from '../../pages/insurances/add-insurance/add-insurance.component';
+import { UpdateClientComponent } from '../../pages/clients/update-client/update-client.component';
+import { AddClientComponent } from '../../pages/clients/add-client/add-client.component';
+import { MedicsComponent } from '../../pages/medics/medics.component';
+import { ClientsComponent } from '../../pages/clients/clients.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -34,7 +41,14 @@ import { UpdateCompanyComponent } from '../../pages/companies/update-company/upd
     MapsComponent,
     CompaniesComponent,
     AddCompanyComponent,
-    UpdateCompanyComponent
+    UpdateCompanyComponent,
+    InsurancesComponent,
+    AddInsuranceComponent,
+    UpdateInsuranceComponent, 
+    ClientsComponent,
+    MedicsComponent,
+    AddClientComponent,
+    UpdateClientComponent,
   ]
 })
 

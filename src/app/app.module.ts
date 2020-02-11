@@ -20,7 +20,12 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { UpdateCompanyComponent } from './dashboard/pages/companies/update-company/update-company.component';
-import { InsurancesComponent } from './pages/insurances/insurances.component';
+import { AddInsuranceComponent } from './dashboard/pages/insurances/add-insurance/add-insurance.component';
+import { UpdateInsuranceComponent } from './dashboard/pages/insurances/update-insurance/update-insurance.component';
+import { ClientsComponent } from './dashboard/pages/clients/clients.component';
+import { MedicsComponent } from './dashboard/pages/medics/medics.component';
+import { AddClientComponent } from './dashboard/pages/clients/add-client/add-client.component';
+import { UpdateClientComponent } from './dashboard/pages/clients/update-client/update-client.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +33,6 @@ import { InsurancesComponent } from './pages/insurances/insurances.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     TestComponent,
-    InsurancesComponent,
-  
     
   ],
   imports: [

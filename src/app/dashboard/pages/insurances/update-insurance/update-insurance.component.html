@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">New Insurance</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #insuranceForm="ngForm" (ngSubmit)="submitAdding()">
+    <div class="form-group">
+      <h6>Name <span class="icon-danger text-orange">*</span></h6>
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="Title" name="name" [(ngModel)]="insurance.name"
+          #name="ngModel">
+      </div>
+
+      <br>
+      
+        <h6>Email <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="Email" type="email" name="email" [(ngModel)]="insurance.email"
+            #email="ngModel">
+
+
+        </div>
+  
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-primary" [disabled]="insuranceForm.invalid">Add</button>
+    </div>
+  </form>
+</div>
