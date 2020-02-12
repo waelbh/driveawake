@@ -1,0 +1,51 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">New Car</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #clientForm="ngForm" (ngSubmit)="submitAdding()">
+    <div class="form-group">
+      <h6>Car Reference <span class="icon-danger text-orange">*</span></h6>
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="Reference" name="name" [(ngModel)]="car.ref"
+          #name="ngModel">
+      </div>
+
+      <br>
+
+      <h6>Insurance <span class="icon-danger text-orange">*</span></h6>
+      <div class=" input-group">
+        <label class="custom-toggle">
+          <input type="checkbox" [(ngModel)]="checkState" name="checkState">
+          <span class="custom-toggle-slider rounded-circle"></span>
+        </label>
+      </div>
+      <div class="input-group" [hidden]="!checkState">
+        <select class=" form-control" name="insurance" [(ngModel)]="car.assurance">
+          <option *ngFor="let x of ListInsurance | async" value="x">{{x.name}}</option>
+        </select>
+      </div>
+      <div class="input-group" [hidden]="checkState">
+        <h6>Name <span class="icon-danger text-orange">*</span></h6>
+        <div class="input-group">
+          <input class="form-control" type="text" placeholder="Title" name="Iname" [(ngModel)]="insurance.name"
+            #Iname="ngModel">
+        </div>
+
+        <br>
+
+        <h6>Email <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="Email" type="email" name="Iemail" [(ngModel)]="insurance.email"
+            #Iemail="ngModel">
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-primary" [disabled]="clientForm.invalid">Add</button>
+    </div>
+  </form>
+</div>

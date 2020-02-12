@@ -26,14 +26,14 @@ import { ClientsComponent } from './dashboard/pages/clients/clients.component';
 import { MedicsComponent } from './dashboard/pages/medics/medics.component';
 import { AddClientComponent } from './dashboard/pages/clients/add-client/add-client.component';
 import { UpdateClientComponent } from './dashboard/pages/clients/update-client/update-client.component';
+import { AddCarsComponent } from './dashboard/pages/clients/add-cars/add-cars.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    TestComponent,
-    
+    TestComponent,    
   ],
   imports: [
     BrowserModule,

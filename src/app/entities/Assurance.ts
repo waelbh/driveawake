@@ -3,5 +3,6 @@ export class Assurance {
     email:any;
     password:any;
     name:any;
+    telephone:any;
     parrains:any[];
 }

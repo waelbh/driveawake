@@ -1,3 +1,91 @@
-<p>
-  add-client works!
-</p>
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">New Client</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #clientForm="ngForm" (ngSubmit)="submitAdding()">
+    <div class="form-group">
+      <h6>Name <span class="icon-danger text-orange">*</span></h6>
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="Title" name="name" [(ngModel)]="client.name"
+          #name="ngModel">
+      </div>
+
+      <br>
+
+      <h6>Email <span class="icon-danger text-orange">*</span></h6>
+      <div class=" input-group">
+        <input class=" form-control" placeholder="Email" type="email" name="email" [(ngModel)]="client.email"
+          #email="ngModel">
+
+
+      </div>
+
+      <br>
+      <h6>Telephone <span class="icon-danger text-orange">*</span></h6>
+      <div class=" input-group">
+        <input class=" form-control" placeholder="Telephone" type="text" name="telephone"
+          [(ngModel)]="client.telephone" #telephone="ngModel">
+      </div>
+      <br>
+
+      <h6>Password <span class="icon-danger text-orange">*</span></h6>
+      <div class=" input-group">
+        <input class=" form-control" placeholder="Password" type="password" name="password"
+          [(ngModel)]="client.password" #password="ngModel">
+      </div>
+      <br>
+
+      <!--<h6>Insurance <span class="icon-danger text-orange">*</span></h6>
+      <div class=" input-group">
+        <label class="custom-toggle">
+          <input type="checkbox" [(ngModel)]="checkState" name="checkState">
+          <span class="custom-toggle-slider rounded-circle"></span>
+        </label>
+      </div>
+         <div class="input-group" [hidden]="!checkState" >
+          <select class=" form-control" name="insurance"  >
+            <option *ngFor="let x of ListInsurance | async" value="x">hello {{x.name}}</option>
+          </select>
+        </div> -->
+        <h6>Medic Name <span class="icon-danger text-orange">*</span></h6>
+        <div class="input-group">
+          <input class="form-control" type="text" placeholder="Title" name="Mname" [(ngModel)]="medic.name"
+            #Mname="ngModel">
+        </div>
+  
+        <br>
+  
+        <h6>Medic Email <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="Email" type="email" name="Memail" [(ngModel)]="medic.email"
+            #Memail="ngModel">
+  
+  
+        </div>
+        <br>
+  
+        <h6>Medic Telephone <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="Telephone" type="text" name="Mtelephone" [(ngModel)]="medic.telephone"
+            #Mtelephone="ngModel">
+  
+  
+        </div>
+        <br>
+  
+        <h6>Medic Password <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="Medic Password" type="password" name="Mpassword" [(ngModel)]="medic.password"
+            #Mpassword="ngModel">
+  
+  
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-primary" [disabled]="clientForm.invalid">Add</button>
+    </div>
+  </form>
+</div>
