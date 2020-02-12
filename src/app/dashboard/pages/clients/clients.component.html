@@ -5,9 +5,7 @@
 <ng-template #content2 let-modal2>
   <app-update-client (closing)="closee($event)" [client]="clienttoupdate"  ></app-update-client>
 </ng-template>
-<ng-template #content3 let-modal3>
-  <app-add-cars (closing)="closee($event)" [client]="clienttoupdate"  ></app-add-cars>
-</ng-template>
+
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
   <div class="container-fluid">
     <div class="my-btn">
@@ -59,8 +57,8 @@
                         <p class="display-4 text-white"> {{x.name}}</p>
                       
                   
-                        <a href="javascript:void(0)" class="btn btn-warning mt-4" (click)="open2(content2,x)">Add Cars </a>
-                        <a href="javascript:void(0)" class="btn btn-warning mt-4" (click)="open3(content3,x)" >Update</a>
+                        <a href="javascript:void(0)" class="btn btn-warning mt-4" [routerLink]="['/cars/',x.id]">   Cars   </a>
+                        <a href="javascript:void(0)" class="btn btn-warning mt-4" (click)="open2(content2,x)" >Update</a>
                         <a href="javascript:void(0)" class="btn btn-warning mt-4"  (click)="delete(x)">Delete</a>
                       </div>
                     

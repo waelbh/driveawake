@@ -10,10 +10,11 @@ import { InsurancesComponent } from '../../pages/insurances/insurances.component
 import { ClientsComponent } from '../../pages/clients/clients.component';
 import { MedicsComponent } from '../../pages/medics/medics.component';
 import { LoginComponent } from '../../pages/login/login.component';
+import { CarsComponent } from '../../pages/clients/cars/cars.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
-  
+    { path: 'cars/:id', component: CarsComponent},
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'companies',         component: CompaniesComponent },

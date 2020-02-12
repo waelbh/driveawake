@@ -82,6 +82,11 @@ export class SidebarComponent implements OnInit {
       this.router.events.subscribe((event) => {
         this.isCollapsed = true;
      });
+    }else {
+      this.menuItems = ROUTES.filter(menuItem => menuItem);
+      this.router.events.subscribe((event) => {
+        this.isCollapsed = true;
+     });
     }
    
   }

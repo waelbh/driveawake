@@ -24,6 +24,7 @@ import { MedicsComponent } from '../../pages/medics/medics.component';
 import { ClientsComponent } from '../../pages/clients/clients.component';
 import { AddCarsComponent } from '../../pages/clients/add-cars/add-cars.component';
 import { LoginComponent } from '../../pages/login/login.component';
+import { CarsComponent } from '../../pages/clients/cars/cars.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -52,6 +53,7 @@ import { LoginComponent } from '../../pages/login/login.component';
     AddClientComponent,
     UpdateClientComponent,
     AddCarsComponent,
+    CarsComponent,
     
   ]
 })

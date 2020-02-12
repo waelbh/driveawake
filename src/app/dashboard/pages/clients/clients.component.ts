@@ -11,7 +11,7 @@ import { CompanyServices } from 'src/app/services/UserService/CompanyServices';
 export class ClientsComponent implements OnInit {
   closeResult: string;
   ListClients:Observable<any[]>;
-  companytoupdate:any;
+  clienttoupdate:any;
   constructor(private modalService: NgbModal,private companyServices:CompanyServices) {
     this.ListClients = this.companyServices.getClients();
     console.log(this.ListClients)
@@ -34,7 +34,7 @@ export class ClientsComponent implements OnInit {
     });
   }
   open2(content,x) {
-    this.companytoupdate = x;
+    this.clienttoupdate = x;
     this.modalService.open(content, { ariaLabelledBy: 'modal2-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -42,8 +42,9 @@ export class ClientsComponent implements OnInit {
     });
   }
   open3(content,x) {
-    this.companytoupdate = x;
-    this.modalService.open(content, { ariaLabelledBy: 'modal2-basic-title' }).result.then((result) => {
+   this.clienttoupdate = x;
+   console.log(this.clienttoupdate);
+    this.modalService.open(content, { ariaLabelledBy: 'modal3-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
