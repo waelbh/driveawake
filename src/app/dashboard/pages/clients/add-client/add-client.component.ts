@@ -3,6 +3,7 @@ import { Parain } from 'src/app/entities/Parrain';
 import { CompanyServices } from 'src/app/services/UserService/CompanyServices';
 import { Observable } from 'rxjs';
 import { IntervenantMedicale } from 'src/app/entities/IntervenantMedicale';
+import { Company } from 'src/app/entities/Company';
 
 @Component({
   selector: 'app-add-client',
@@ -15,12 +16,15 @@ export class AddClientComponent implements OnInit {
   client:Parain = new Parain();
   medic:IntervenantMedicale=new IntervenantMedicale();
   checkState:boolean=false;
+  Company:Company = new Company(); 
   constructor(private companyservices:CompanyServices) { 
   }
   ListInsurance:Observable<any[]>;
   ngOnInit() {
     this.closing.emit(false);
     this.ListInsurance = this.companyservices.getInsurances();
+
+  
    
   }
 
@@ -35,11 +39,18 @@ export class AddClientComponent implements OnInit {
 
   submitAdding() {
     this.client.medic=this.medic;
-    this.companyservices.addMedical(this.medic);
-    
-    //this.companyservices.addClient(this.client,this.medic);
+     
+
+    let a =JSON.parse(localStorage.getItem('user'));
+    //get by id
+console.log(a[0].roleRefId);
+    this.companyservices.getCompanyById(a[0].roleRefId).subscribe(data =>  {
+      this.Company = JSON.parse(JSON.stringify(data.data()));
+      this.companyservices.addClient(this.Company,this.client,this.medic);
  
-    this.closing.emit(true);
+      this.closing.emit(true);
+    });
+  
 // add
   }
 

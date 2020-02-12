@@ -18,7 +18,7 @@ export class CompanyServices {
     ClientCollection: AngularFirestoreCollection<Parain>;
     UserCollection: AngularFirestoreCollection<User>;
     constructor(private db: AngularFirestore) {
-        this.InsuranceCollection = this.db.collection('Company');
+        this.CompanyCollection = this.db.collection('Company');
         this.InsuranceCollection = this.db.collection('Insurance');
         this.MedicalCollection = this.db.collection('IntMedicale');
         this.ClientCollection=this.db.collection('Client')
@@ -50,7 +50,7 @@ export class CompanyServices {
         
         this.InsuranceCollection.doc(Assurance.id).update(JSON.parse(JSON.stringify(Assurance)))
     }
-    addMedical(medical: IntervenantMedicale) {
+    addMedical(medical: IntervenantMedicale):any {
         let user = new User();
         this.MedicalCollection.add(JSON.parse(JSON.stringify(medical))).then(docRef => {
             docRef.update({id: docRef.id});
@@ -59,7 +59,7 @@ export class CompanyServices {
             user.role = "intervenantMedical";
             user.roleRefId = docRef.id;
             this.UserCollection.add(JSON.parse(JSON.stringify(user)));
-       
+        
        })
        .catch(error => console.error("Error adding document: ", error));
    
@@ -76,21 +76,53 @@ export class CompanyServices {
         this.MedicalCollection.doc(medical.id).update(JSON.parse(JSON.stringify(medical)))
     }
     addClient(company:Company,client: Parain,medic:IntervenantMedicale) {
+
+        let userone = new User();
+        this.MedicalCollection.add(JSON.parse(JSON.stringify(medic))).then(docRefmedic => {
+            docRefmedic.update({id: docRefmedic.id});
+            userone.email = medic.email;
+            userone.password = medic.password;
+            userone.role = "intervenantMedical";
+            userone.roleRefId = docRefmedic.id;
+            this.UserCollection.add(JSON.parse(JSON.stringify(userone)));
+        
+      
+
+
+
+
+
         let user = new User();
+        
         this.ClientCollection.add(JSON.parse(JSON.stringify(client))).then(docRef => {
+            if(!company.parrains){
+                company.parrains = [];
+            }
+            if(!medic.parrain){
+                medic.parrain = [];
+            }
             docRef.update({id: docRef.id});
             user.email = client.email;
             user.password = client.password;
             user.role = "client";
             user.roleRefId = docRef.id;
+            let a = docRef.id;
+            console.log(company.parrains,docRef.id);
+            console.log(company);
+            
             company.parrains.push(docRef.id);
             medic.parrain.push(docRef.id);
-            this.MedicalCollection.doc(medic.id).update(JSON.parse(JSON.stringify(medic)));
+            console.log(medic);
+            console.log(docRefmedic);
+            this.MedicalCollection.doc(docRefmedic.id).update(JSON.parse(JSON.stringify(medic)));
             this.CompanyCollection.doc(company.id).update(JSON.parse(JSON.stringify(company)));
             this.UserCollection.add(JSON.parse(JSON.stringify(user)));
        
        })
        .catch(error => console.error("Error adding document: ", error));
+
+    })
+    .catch(error => console.error("Error adding document: ", error));
    
     }
     getClients(){
@@ -104,4 +136,7 @@ export class CompanyServices {
         
         this.ClientCollection.doc(client.id).update(JSON.parse(JSON.stringify(client)))
     }
+    getCompanyById(userId){
+        return this.CompanyCollection.doc(userId).get();
+       }
 }

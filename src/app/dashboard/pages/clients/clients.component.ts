@@ -69,5 +69,13 @@ export class ClientsComponent implements OnInit {
   formulairesubmited(){
 
   }
+  getstyle(picture){
+    return {
+      'background-image':"url('../../assets/img/person.png')" ,
+      'background-size': 'cover',
+      'background-position': 'center'
+  
+    }
+  }
 
 }

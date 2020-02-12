@@ -9,9 +9,11 @@ import { CompaniesComponent } from '../../pages/companies/companies.component';
 import { InsurancesComponent } from '../../pages/insurances/insurances.component';
 import { ClientsComponent } from '../../pages/clients/clients.component';
 import { MedicsComponent } from '../../pages/medics/medics.component';
+import { LoginComponent } from '../../pages/login/login.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
+  
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'companies',         component: CompaniesComponent },

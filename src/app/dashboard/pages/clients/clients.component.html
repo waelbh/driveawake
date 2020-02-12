@@ -21,85 +21,71 @@
 <div class="container-fluid mt--7">
  
   <!-- Table -->
-  <div class="row">
-    <div class="col">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <h3 class="mb-0">Clients</h3>
-        </div>
 
-        <div class="table-responsive">
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Outil</th>
-               
-              </tr>
-            </thead>
-            <tbody>
 
-              <!-- table content -->
-              <tr *ngFor="let x of ListClients | async">
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">{{x.name}}</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                 {{ x.email}}
-                </td>
-             
-                
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)" (click)="open2(content2,x)">Update</a>
-                      <a class="dropdown-item" href="javascript:void(0)" (click)="open3(content3,x)">Add Cars</a>
-                      <a class="dropdown-item" href="javascript:void(0)"(click)="delete(x)">Delete</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card-footer py-4">
-          <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
-              <li class="page-item disabled">
-                <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                  <i class="fas fa-angle-left"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="javascript:void(0)">1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                  <i class="fas fa-angle-right"></i>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="card shadow">
+    <div class="card-header border-0">
+      <h3 class="mb-0">Clients List</h3>
     </div>
-  </div>
+
+   
+      
+      <section class="section ">
+         
+            <div class="row justify-content-center">
+              <div class="col-lg-12">
+                <div class="row row-grid">
+                  <div class="col-lg-3" *ngFor="let x of ListClients | async" style="border-radius: 50% !important;">
+                    <div class="card card-lift--hover shadow border-0" >
+                        
+                      <div class="card-body py-5 " [ngStyle]="getstyle()">
+                      <span class="mask bg-gradient-danger opacity-3"></span>
+                        <div class="icon icon-shape icon-shape-warning rounded-circle mb-4">
+                          <i class="ni ni-app"></i>
+                        </div>
+                        <h6 class="mb-0 text-uppercase text-white">{{ x.email}}</h6>
+                        <p class="display-4 text-white"> {{x.name}}</p>
+                      
+                  
+                        <a href="javascript:void(0)" class="btn btn-warning mt-4" (click)="open2(content2,x)">Add Cars </a>
+                        <a href="javascript:void(0)" class="btn btn-warning mt-4" (click)="open3(content3,x)" >Update</a>
+                        <a href="javascript:void(0)" class="btn btn-warning mt-4"  (click)="delete(x)">Delete</a>
+                      </div>
+                    
+                    
+                    </div>
+                  </div>
+                  
+                </div>
+                
+              </div>
+          </div>
+         
+        </section>
+       
+    </div>
+   
+  
+
+
+
+
+
+
+
+
+
 
 </div>
