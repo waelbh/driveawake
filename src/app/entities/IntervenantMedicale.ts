@@ -3,5 +3,6 @@ export class IntervenantMedicale {
     email:any;
     password:any;
     name:any;
+    Telephone:any;
     parrain:any[];
 }
