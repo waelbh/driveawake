@@ -5,5 +5,8 @@ export class Company {
     password:any;
     telephone:any;
     parrains?:any[];
+    address?:any;
+    country?:any;
+    city?:any;
     assurances:any[];
 }
