@@ -4,5 +4,8 @@ export class Assurance {
     password:any;
     name:any;
     telephone:any;
+    address?:any;
+    country?:any;
+    city?:any;
     parrains:any[];
 }
