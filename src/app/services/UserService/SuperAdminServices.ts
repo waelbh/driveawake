@@ -44,4 +44,5 @@ export class SuperAdminServices {
         
         this.CompanyCollection.doc(company.id).update(JSON.parse(JSON.stringify(company)))
     }
+   
 }
