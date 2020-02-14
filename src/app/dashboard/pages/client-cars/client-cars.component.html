@@ -1,0 +1,71 @@
+<ng-template #content1 let-modal1>
+  <app-add-driver (closing)="closee($event)"[car]="cartoupdate" ></app-add-driver>
+</ng-template>
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0 yassine" *ngFor="let a of carList | async">
+      <div class="card card-profile shadow">
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <a href="javascript:void(0)">
+                <img src="assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+          <div class="d-flex justify-content-between">
+            <button (click)="showinfo()" class="btn btn-sm btn-info mr-4">Edit</button>
+          </div>
+        </div>
+        <div class="card-body pt-0 pt-md-4">
+          <div class="row">
+            <div class="col">
+              <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                <div class="text-center">
+                  <h3>
+                    Insurance
+                  </h3>
+                  <div class="h5 mt-4">
+                    <i class="ni business_briefcase-24 mr-2"></i>Name: {{a.assuranceName}}
+                  </div>
+                  <div>
+                    <i class="ni education_hat mr-2" style="font-size: 20px;"></i>Email: {{a.assuranceEmail}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <div class="text-center">
+            <div [hidden]="showorhide(a)">
+              <h3>
+                {{a.nameDriver}} <span class="font-weight-light">,{{a.ageDriver}} </span>
+              </h3>
+              <div class="h5 font-weight-300">
+                <i class="ni location_pin mr-2"></i> {{a.cityDriver}} , {{a.countryDriver}}
+              </div>
+              <div class="h5 mt-4">
+                <i class="ni business_briefcase-24 mr-2"></i>Email: {{a.emailDriver}}
+              </div>
+              <div>
+                <i class="ni education_hat mr-2"></i>Phone number: {{a.telephoneDriver}}
+              </div>
+            </div>
+            <div [hidden]="!showorhide(a)">
+              <button type="button" (click)="open2(content1,a)" class="btn btn-info">Add driver</button>
+            </div>
+            <hr class="my-4" />
+            <a href="javascript:void(0)" [routerLink]="['/details/',a.ref]">Show more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

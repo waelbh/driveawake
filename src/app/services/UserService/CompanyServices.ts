@@ -8,6 +8,7 @@ import { IntervenantMedicale } from 'src/app/entities/IntervenantMedicale';
 import { Parain } from 'src/app/entities/Parrain';
 import { Company } from 'src/app/entities/Company';
 import { Conducteur } from 'src/app/entities/Conducteur';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -170,5 +171,16 @@ export class CompanyServices {
     getParrainById(id){
         return this.CompanyCollection.doc(id).get(); 
     }
+    getCarsbyClient(id:any){
+        let cars = this.db.collection('Car', ref => ref.where('refParrain', '==', id)).snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              data['id'] = id;
+              return data;
+            }
+            ))
+          );
+          return cars;     }
 
 }
