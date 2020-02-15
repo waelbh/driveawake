@@ -107,12 +107,6 @@ export class CompanyServices {
             userone.roleRefId = docRefmedic.id;
             this.UserCollection.add(JSON.parse(JSON.stringify(userone)));
 
-
-
-
-
-
-
             let user = new User();
 
             this.ClientCollection.add(JSON.parse(JSON.stringify(client))).then(docRef => {
@@ -237,12 +231,15 @@ Intermedicale:any[];
     }
     updateClient(client: Parain) {
 
-        this.ClientCollection.doc(client.id).update(JSON.parse(JSON.stringify(client)))
+        this.ClientCollection.doc(client.id).update(JSON.parse(JSON.stringify(client)));
     }
     getCompanyById(userId) {
         return this.CompanyCollection.doc(userId).get();
     }
 
+    getClientById(userId) {
+        return this.ClientCollection.doc(userId).get();
+    }
 
     //CArss
     getCars() {
@@ -419,17 +416,18 @@ if (needinssuresupdate){
     getIntMedicaleById(id){
         return this.MedicalCollection.doc(id).get(); 
     }
-    getCarsbyClient(id:any){
+    getCarsbyClient(id: any) {
         let cars = this.db.collection('Car', ref => ref.where('refParrain', '==', id)).snapshotChanges().pipe(
             map(actions => actions.map(a => {
-              const data = a.payload.doc.data();
-              const id = a.payload.doc.id;
-              data['id'] = id;
-              return data;
+                const data = a.payload.doc.data();
+                const id = a.payload.doc.id;
+                data['id'] = id;
+                return data;
             }
             ))
-          );
-          return cars;     }
+        );
+        return cars;
+    }
 
 
 getCarsinfobyClient(id:any,reff:any){

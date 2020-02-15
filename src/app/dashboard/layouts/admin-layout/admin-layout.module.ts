@@ -28,6 +28,7 @@ import { CarsComponent } from '../../pages/clients/cars/cars.component';
 import { ClientCarsComponent } from '../../pages/client-cars/client-cars.component';
 import { AddDriverComponent } from '../../pages/client-cars/add-driver/add-driver.component';
 import { DetailsComponent } from '../../pages/client-cars/details/details.component';
+import { ClientsProfileComponent } from '../../pages/clients-profile/clients-profile.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -60,6 +61,8 @@ import { DetailsComponent } from '../../pages/client-cars/details/details.compon
     ClientCarsComponent,
     AddDriverComponent,
     DetailsComponent,
+    ClientsProfileComponent,
+
 
 
     
