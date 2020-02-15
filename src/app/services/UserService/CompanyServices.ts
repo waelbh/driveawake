@@ -419,6 +419,16 @@ if (needinssuresupdate){
     getIntMedicaleById(id){
         return this.MedicalCollection.doc(id).get(); 
     }
-   
+    getCarsbyClient(id:any){
+        let cars = this.db.collection('Car', ref => ref.where('refParrain', '==', id)).snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              data['id'] = id;
+              return data;
+            }
+            ))
+          );
+          return cars;     }
 
 }

@@ -30,7 +30,7 @@ export const ROUTESCompany: RouteInfo[] = [
 
 export const ROUTESClient: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-  { path: '/clients', title: 'Clients',  icon:'ni-bullet-list-67 text-red', class: '' },
+  { path: '/clientCars', title: 'Cars',  icon:'ni-bullet-list-67 text-red', class: '' },
 
 ];
 export const ROUTESAssurance: RouteInfo[] = [

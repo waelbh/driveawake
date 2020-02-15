@@ -6,8 +6,14 @@ export class Conducteur {
     assurancestatiqueName?:any;
     assurancestatiqueEmail?:any;
     dynamicassurance:boolean;
-    nameDriver:any;
-    emailDriver:any;
-    telephoneDriver:any;
+  
+   
+    nameDriver?:any;
+    emailDriver?:any;
+    telephoneDriver?:any;
+    ageDriver?:any;
+    addressDriver?:any;
+    cityDriver?:any;
+    countryDriver?:any;
     data:any;
 }

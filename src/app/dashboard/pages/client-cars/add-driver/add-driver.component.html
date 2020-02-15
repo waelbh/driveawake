@@ -1,0 +1,65 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">New Driver</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #carForm="ngForm" (ngSubmit)="submitAdding()">
+    <div class="form-group">
+      <h6>Driver Name<span class="icon-danger text-orange">*</span></h6>
+      <div class="input-group">
+        <input class="form-control" type="text" placeholder="Title" name="name" [(ngModel)]="car.nameDriver"
+          #name="ngModel">
+      </div>
+
+    <br>
+        <h6>Driver age <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="age" type="text" name="age"
+            [(ngModel)]="car.ageDriver" #age="ngModel">
+        </div>
+        <br>
+        <h6>Driver Address <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="Address" type="text" name="address"
+            [(ngModel)]="car.addressDriver" #address="ngModel">
+        </div>
+        <br>
+        
+        <h6>Driver Country <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="Country" type="text" name="country"
+            [(ngModel)]="car.countryDriver" #country="ngModel">
+        </div>
+        <br>
+        <h6>Driver City <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="City" type="text" name="city"
+            [(ngModel)]="car.cityDriver" #city="ngModel">
+        </div>
+        <br>
+      
+        <h6>Driver Email <span class="icon-danger text-orange">*</span></h6>
+        <div class=" input-group">
+          <input class=" form-control" placeholder="Email" type="email" name="email" [(ngModel)]="car.emailDriver"
+            #email="ngModel">
+        </div>
+  
+      <br>
+
+      <h6>Driver Telephone <span class="icon-danger text-orange">*</span></h6>
+      <div class=" input-group">
+        <input class=" form-control" placeholder="Telephone" type="text" name="telephone" [(ngModel)]="car.telephoneDriver"
+          #telephone="ngModel">
+
+
+      </div>
+        
+
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-primary" [disabled]="carForm.invalid">Add</button>
+    </div>
+  </form>
+</div>
