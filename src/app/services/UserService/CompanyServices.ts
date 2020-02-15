@@ -431,4 +431,17 @@ if (needinssuresupdate){
           );
           return cars;     }
 
+
+getCarsinfobyClient(id:any,reff:any){
+    let cars = this.db.collection('Car', ref => ref.where('refParrain', '==', id).where('ref','==',reff)).snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          data['id'] = id;
+          return data;
+        }
+        ))
+      );
+      return cars;     }
+
 }
