@@ -29,6 +29,11 @@ import { ClientCarsComponent } from '../../pages/client-cars/client-cars.compone
 import { AddDriverComponent } from '../../pages/client-cars/add-driver/add-driver.component';
 import { DetailsComponent } from '../../pages/client-cars/details/details.component';
 import { ClientsProfileComponent } from '../../pages/clients-profile/clients-profile.component';
+import { InsuranceProfileComponent } from '../../pages/insurance-profile/insurance-profile.component';
+import { MedicProfileComponent } from '../../pages/medic-profile/medic-profile.component';
+import { MedicPatientsComponent } from '../../pages/medic-patients/medic-patients.component';
+import { MedicPatientCarsComponent } from '../../pages/medic-patient-cars/medic-patient-cars.component';
+import { MedicPatientDetailsComponent } from '../../pages/medic-patient-details/medic-patient-details.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -62,6 +67,14 @@ import { ClientsProfileComponent } from '../../pages/clients-profile/clients-pro
     AddDriverComponent,
     DetailsComponent,
     ClientsProfileComponent,
+    InsuranceProfileComponent,
+    MedicProfileComponent,
+    MedicPatientsComponent,
+    MedicPatientCarsComponent,
+    MedicPatientDetailsComponent,
+
+
+
 
 
 
