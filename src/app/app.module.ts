@@ -28,6 +28,8 @@ import { AddClientComponent } from './dashboard/pages/clients/add-client/add-cli
 import { UpdateClientComponent } from './dashboard/pages/clients/update-client/update-client.component';
 import { AddCarsComponent } from './dashboard/pages/clients/add-cars/add-cars.component';
 import { CarsComponent } from './dashboard/pages/clients/cars/cars.component';
+import { HomeComponent } from './dashboard/pages/home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { CarsComponent } from './dashboard/pages/clients/cars/cars.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     TestComponent,
+    
+  
     
   ],
   imports: [

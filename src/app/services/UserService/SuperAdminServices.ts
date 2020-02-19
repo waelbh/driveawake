@@ -5,7 +5,14 @@ import { Company } from 'src/app/entities/Company';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/entities/User';
 import { CommaExpr } from '@angular/compiler';
-
+function makeRandom(lengthOfCode: number, possible: string) {
+    let text = "";
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
+  }
+ 
 
 @Injectable({
     providedIn: 'root'
@@ -21,6 +28,11 @@ export class SuperAdminServices {
 
     addCompany(company: Company) {
         let user = new User();
+       
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        const lengthOfCode = 8;
+      var a =  makeRandom(lengthOfCode, possible);
+       company.password =a ;
         this.CompanyCollection.add(JSON.parse(JSON.stringify(company))).then(docRef => {
             docRef.update({id: docRef.id});
             user.email = company.email;
