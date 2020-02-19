@@ -85,6 +85,21 @@ export class CompanyServices {
                 }
             })
         }
+        let Companies = this.db.collection('User', ref => ref.where('roleRefId', '==', Assurance.id)).snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              data['id'] = id;
+              return data;
+            }
+            ))
+          );
+         Companies.subscribe(data => {
+             let a = JSON.parse(JSON.stringify(data[0]));
+             a.email = Assurance.email;
+             a.password = Assurance.password;
+             this.UserCollection.doc(a.id).update(a);
+         })
     }
     addMedical(medical: IntervenantMedicale): any {
         let user = new User();
@@ -113,7 +128,23 @@ export class CompanyServices {
     }
     updateMedical(medical: IntervenantMedicale) {
 
-        this.MedicalCollection.doc(medical.id).update(JSON.parse(JSON.stringify(medical)))
+        this.MedicalCollection.doc(medical.id).update(JSON.parse(JSON.stringify(medical)));
+        let Companies = this.db.collection('User', ref => ref.where('roleRefId', '==', medical.id)).snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              data['id'] = id;
+              return data;
+            }
+            ))
+          );
+         Companies.subscribe(data => {
+             let a = JSON.parse(JSON.stringify(data[0]));
+             a.email = medical.email;
+             a.password = medical.password;
+             console.log(a);
+             this.UserCollection.doc(a.id).update(a);
+         })
     }
     addClient(company: Company, client: Parain, medic: IntervenantMedicale) {
 
@@ -262,6 +293,23 @@ Intermedicale:any[];
     updateClient(client: Parain) {
 
         this.ClientCollection.doc(client.id).update(JSON.parse(JSON.stringify(client)));
+
+        let Companies = this.db.collection('User', ref => ref.where('roleRefId', '==', client.id)).snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              data['id'] = id;
+              return data;
+            }
+            ))
+          );
+         Companies.subscribe(data => {
+             let a = JSON.parse(JSON.stringify(data[0]));
+             a.email = client.email;
+             a.password = client.password;
+             console.log(a);
+             this.UserCollection.doc(a.id).update(a);
+         })
     }
     getCompanyById(userId) {
         return this.CompanyCollection.doc(userId).get();
