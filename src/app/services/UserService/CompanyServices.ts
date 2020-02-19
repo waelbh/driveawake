@@ -9,6 +9,15 @@ import { Parain } from 'src/app/entities/Parrain';
 import { Company } from 'src/app/entities/Company';
 import { Conducteur } from 'src/app/entities/Conducteur';
 import { map } from 'rxjs/operators';
+function makeRandom(lengthOfCode: number, possible: string) {
+    let text = "";
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+      return text;
+  }
+ 
+
 
 @Injectable({
     providedIn: 'root'
@@ -31,6 +40,12 @@ export class CompanyServices {
 
     addInsurance(Assurance: Assurance) {
         let user = new User();
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        const lengthOfCode = 8;
+      var a =  makeRandom(lengthOfCode, possible);
+       Assurance.password =a ;
+ 
+       
         this.InsuranceCollection.add(JSON.parse(JSON.stringify(Assurance))).then(docRef => {
             docRef.update({ id: docRef.id });
             user.email = Assurance.email;
@@ -73,6 +88,10 @@ export class CompanyServices {
     }
     addMedical(medical: IntervenantMedicale): any {
         let user = new User();
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        const lengthOfCode = 8;
+      var a =  makeRandom(lengthOfCode, possible);
+       medical.password =a ;
         this.MedicalCollection.add(JSON.parse(JSON.stringify(medical))).then(docRef => {
             docRef.update({ id: docRef.id });
             user.email = medical.email;
@@ -99,6 +118,13 @@ export class CompanyServices {
     addClient(company: Company, client: Parain, medic: IntervenantMedicale) {
 
         let userone = new User();
+     
+        let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        const lengthOfCode = 8;
+      var a =  makeRandom(lengthOfCode, possible);
+       medic.password =a ;
+ 
+    
         this.MedicalCollection.add(JSON.parse(JSON.stringify(medic))).then(docRefmedic => {
             docRefmedic.update({ id: docRefmedic.id });
             userone.email = medic.email;
@@ -108,7 +134,11 @@ export class CompanyServices {
             this.UserCollection.add(JSON.parse(JSON.stringify(userone)));
 
             let user = new User();
-
+           
+            let possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            const lengthOfCode = 8;
+          var a =  makeRandom(lengthOfCode, possible);
+           client.password =a ;
             this.ClientCollection.add(JSON.parse(JSON.stringify(client))).then(docRef => {
                 if (!company.parrains) {
                     company.parrains = [];

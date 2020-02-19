@@ -29,6 +29,8 @@ import { UpdateClientComponent } from './dashboard/pages/clients/update-client/u
 import { AddCarsComponent } from './dashboard/pages/clients/add-cars/add-cars.component';
 import { CarsComponent } from './dashboard/pages/clients/cars/cars.component';
 import { InsuranceProfileComponent } from './dashboard/pages/insurance-profile/insurance-profile.component';
+import { HomeComponent } from './dashboard/pages/home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { InsuranceProfileComponent } from './dashboard/pages/insurance-profile/i
     AuthLayoutComponent,
     TestComponent,
     InsuranceProfileComponent,
+    
+  
     
   ],
   imports: [
