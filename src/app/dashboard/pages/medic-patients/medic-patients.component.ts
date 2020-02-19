@@ -1,47 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { Parain } from 'src/app/entities/Parrain';
+import { IntervenantMedicale } from 'src/app/entities/IntervenantMedicale';
 import { CompanyServices } from 'src/app/services/UserService/CompanyServices';
-import { AgoraClient, Stream, NgxAgoraService, StreamEvent, ClientEvent } from 'ngx-agora';
+import { Observable } from 'rxjs';
+import { Parain } from 'src/app/entities/Parrain';
+import { NgxAgoraService, AgoraClient, Stream, ClientEvent, StreamEvent } from 'ngx-agora';
 
 @Component({
-  selector: 'app-clients-profile',
-  templateUrl: './clients-profile.component.html',
-  styleUrls: ['./clients-profile.component.scss']
+  selector: 'app-medic-patients',
+  templateUrl: './medic-patients.component.html',
+  styleUrls: ['./medic-patients.component.scss']
 })
-export class ClientsProfileComponent implements OnInit {
- client:Parain=new Parain();
- edit:boolean=true;
- localCallId = 'agora_local';
+export class MedicPatientsComponent implements OnInit {
+  medic:IntervenantMedicale=new IntervenantMedicale();
+  constructor(private companyservices:CompanyServices,private ngxAgoraService:NgxAgoraService) {
+    this.uid = Math.floor(Math.random() * 100);
+   }
+   localCallId = 'agora_local';
 remoteCalls: string[] = [];
-private Client: AgoraClient;
+private client: AgoraClient;
 private localStream: Stream;
 private uid: number;
 clicked:boolean=false;
-  constructor(private companyservices:CompanyServices,private ngxAgoraService:NgxAgoraService) { 
-    this.uid = Math.floor(Math.random() * 100);
-  }
+  patients:any[]=[];
+  d:any;
+  pat:Parain=new Parain();
 
   ngOnInit() {
     let a =JSON.parse(localStorage.getItem('user'));
     console.log(a[0].roleRefId);
-    this.companyservices.getClientById(a[0].roleRefId).subscribe(data =>  {
-      this.client = JSON.parse(JSON.stringify(data.data()));                   
+    this.companyservices.getIntMedicaleById(a[0].roleRefId).subscribe(data =>  {
+      this.medic = JSON.parse(JSON.stringify(data.data()));     
+      for(let c of this.medic.parrain){
+        console.log(c);
+        this.companyservices.getParrainById(c).subscribe(data=>{
+          this.pat=JSON.parse(JSON.stringify(data.data()));
+          this.patients.push(this.pat);
+        });
+        
+      }       
     });
-  }
-  showinfo(){
-    console.log(this.client);
+    
+    
+
   }
   show(){
-    this.edit=!this.edit;
-    console.log(this.edit);
-  }
-  submitAdding(){
-    this.companyservices.updateClient(this.client);
-    this.edit=!this.edit;
+    console.log(this.patients);
   }
   livechat(){
     this.clicked=!this.clicked;
-    this.Client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' });
+    this.client = this.ngxAgoraService.createClient({ mode: 'rtc', codec: 'h264' });
       this.assignClientHandlers();
   
       this.localStream = this.ngxAgoraService.createStream({ streamID: this.uid, audio: true, video: true, screen: false });
@@ -49,20 +56,20 @@ clicked:boolean=false;
       this.initLocalStream(() => this.join(uid => this.publish(), error => console.error(error))); 
   }
   join(onSuccess?: (uid: number | string) => void, onFailure?: (error: Error) => void): void {
-    this.Client.join(null, 'foo-bar', this.uid, onSuccess, onFailure);
+    this.client.join(null, 'foo-bar', this.uid, onSuccess, onFailure);
   }
   publish(): void {
-    this.Client.publish(this.localStream, err => console.log('Publish local stream error: ' + err));
+    this.client.publish(this.localStream, err => console.log('Publish local stream error: ' + err));
   }
   private assignClientHandlers(): void {
-    this.Client.on(ClientEvent.LocalStreamPublished, evt => {
+    this.client.on(ClientEvent.LocalStreamPublished, evt => {
       console.log('Publish local stream successfully');
     });
 
-    this.Client.on(ClientEvent.Error, error => {
+    this.client.on(ClientEvent.Error, error => {
       console.log('Got error msg:', error.reason);
       if (error.reason === 'DYNAMIC_KEY_TIMEOUT') {
-        this.Client.renewChannelKey(
+        this.client.renewChannelKey(
           '',
           () => console.log('Renewed the channel key successfully.'),
           renewError => console.error('Renew channel key failed: ', renewError)
@@ -70,14 +77,14 @@ clicked:boolean=false;
       }
     });
 
-    this.Client.on(ClientEvent.RemoteStreamAdded, evt => {
+    this.client.on(ClientEvent.RemoteStreamAdded, evt => {
       const stream = evt.stream as Stream;
-      this.Client.subscribe(stream, { audio: true, video: true }, err => {
+      this.client.subscribe(stream, { audio: true, video: true }, err => {
         console.log('Subscribe stream failed', err);
       });
     });
 
-    this.Client.on(ClientEvent.RemoteStreamSubscribed, evt => {
+    this.client.on(ClientEvent.RemoteStreamSubscribed, evt => {
       const stream = evt.stream as Stream;
       const id = this.getRemoteId(stream);
       if (!this.remoteCalls.length) {
@@ -86,7 +93,7 @@ clicked:boolean=false;
       }
     });
 
-    this.Client.on(ClientEvent.RemoteStreamRemoved, evt => {
+    this.client.on(ClientEvent.RemoteStreamRemoved, evt => {
       const stream = evt.stream as Stream;
       if (stream) {
         stream.stop();
@@ -95,7 +102,7 @@ clicked:boolean=false;
       }
     });
 
-    this.Client.on(ClientEvent.PeerLeave, evt => {
+    this.client.on(ClientEvent.PeerLeave, evt => {
       const stream = evt.stream as Stream;
       if (stream) {
         stream.stop();
@@ -136,6 +143,5 @@ hide(){
   location.reload();
 }
 
- 
 
 }

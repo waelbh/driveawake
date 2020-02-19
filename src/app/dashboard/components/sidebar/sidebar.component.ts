@@ -31,16 +31,22 @@ export const ROUTESCompany: RouteInfo[] = [
 export const ROUTESClient: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
   { path: '/clientCars', title: 'Cars',  icon:'ni-bullet-list-67 text-red', class: '' },
-  { path: '/profile', title: 'Profile',  icon:'ni-bullet-list-67 text-red', class: '' },
+  { path: '/profile', title: 'Profile',  icon:'ni-single-02 text-red', class: '' },
 
 ];
 export const ROUTESAssurance: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
+  { path: '/InsuranceClients', title: 'Clients',  icon:'ni-bullet-list-67 text-red', class: '' },
+  { path: '/InsuranceProfile', title: 'Profile',  icon:'ni-single-02 text-red', class: '' },
+
  
 
 ];
 export const ROUTESIntervenantMedicale: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
+  { path: '/MedicPatients', title: 'Patients',  icon:'ni-bullet-list-67 text-red', class: '' },
+  { path: '/MedicProfile', title: 'Profile',  icon:'ni-single-02 text-red', class: '' },
+
 ];
 
 @Component({

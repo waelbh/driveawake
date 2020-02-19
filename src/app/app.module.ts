@@ -15,7 +15,7 @@ import { AuthLayoutComponent } from './dashboard/layouts/auth-layout/auth-layout
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestComponent } from './sharedComponent/test/test.component';
-
+import { NgxAgoraModule } from 'ngx-agora';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
@@ -32,13 +32,14 @@ import { InsuranceProfileComponent } from './dashboard/pages/insurance-profile/i
 import { HomeComponent } from './dashboard/pages/home/home.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
     TestComponent,
-    InsuranceProfileComponent,
+
     
   
     
@@ -55,6 +56,7 @@ import { HomeComponent } from './dashboard/pages/home/home.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
   ],
   providers: [],
   bootstrap: [AppComponent]
