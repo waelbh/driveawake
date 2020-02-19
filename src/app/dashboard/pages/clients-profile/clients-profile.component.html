@@ -3,7 +3,7 @@
   <span class="mask bg-gradient-danger opacity-8"></span>
   <!-- Header container -->
   <div class="container-fluid d-flex align-items-center">
-    <div class="row">
+    <div [hidden]="clicked" class="row">
       <div class="col-lg-7 col-md-10">
         <h1 class="display-2 text-white" style="font-size: 36px !important;">Hello {{client.name}} </h1>
         <p class="text-white mt-0 mb-5">This is your profile page. You can see and update your information.</p>
@@ -12,7 +12,7 @@
     </div>
   </div>
 </div>
-<div class="container-fluid mt--7">
+<div [hidden]="clicked" class="container-fluid mt--7">
   <div class="row">
     <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
       <div class="card card-profile shadow">
@@ -52,7 +52,8 @@
             </div>
             <div>
               <i class="ni education_hat mr-2" style="font-size: 20px;"></i>Email: {{client.medic.email}}
-            </div>
+            </div><br>
+            <a href="javascript:void(0)" (click)="livechat()" class="btn btn-info">Call Doctor</a>
             <hr class="my">
             <h3>
               {{client.name}} <span class="font-weight-light">, {{client.age}} </span>
@@ -186,5 +187,13 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div [hidden]="!clicked">
+  <div [id]="localCallId" class="local">
+          <button (click)="hide()" class="btn btn-info btn-round">End Call</button>
+  </div>
+
+  <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote">
   </div>
 </div>

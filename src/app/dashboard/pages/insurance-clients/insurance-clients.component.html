@@ -2,9 +2,9 @@
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
 </div>
-<div [hidden]="clicked" class="container-fluid mt--7">
+<div class="container-fluid mt--7">
   <div class="row">
-    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0 yassine" *ngFor="let a of patients; let i=index">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0 yassine" *ngFor="let a of clients; let i=index">
       <div class="card card-profile card-lift--hover shadow border-0">  
         <div class="row justify-content-center">
           <div class="col-lg-3 order-lg-2">
@@ -33,8 +33,6 @@
                   <div>
                     <i class="ni education_hat mr-2" style="font-size: 20px;"></i>Email: {{a.email}}
                   </div>
-                  <br>
-                  <a href="javascript:void(0)" (click)="livechat()" class="btn btn-info">Call Patient</a>
                 </div>
               </div>
             </div>
@@ -51,23 +49,11 @@
               <i class="ni business_briefcase-24 mr-2"></i>Address: {{a.address}}
             </div>
             <hr class="my-4" />
-            <a href="javascript:void(0)" [routerLink]="['/PatientCars/',a.id]">Show Details</a>
+            <a href="javascript:void(0)" [routerLink]="['/InsuranceClientCars/',a.id]">Show Details</a>
           </div>
         </div>
       </div>
     </div>
 
   </div>
-</div>
-<div [hidden]="!clicked">
-  <div [id]="localCallId" class="local">
-          <button (click)="hide()" class="btn btn-info btn-round">End Call</button>
-  </div>
-
-  <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote">
-  </div>
-  <!-- <br>
-  <div style="text-align: center;">
-       <button (click)="livechat()" class="btn btn-info btn-round">End Call</button> 
-  </div> -->
 </div>

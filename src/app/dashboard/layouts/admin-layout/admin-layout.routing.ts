@@ -19,18 +19,24 @@ import { MedicProfileComponent } from '../../pages/medic-profile/medic-profile.c
 import { MedicPatientsComponent } from '../../pages/medic-patients/medic-patients.component';
 import { MedicPatientCarsComponent } from '../../pages/medic-patient-cars/medic-patient-cars.component';
 import { MedicPatientDetailsComponent } from '../../pages/medic-patient-details/medic-patient-details.component';
+import { InsuranceClientsComponent } from '../../pages/insurance-clients/insurance-clients.component';
+import { InsuranceClientDetailsComponent } from '../../pages/insurance-client-details/insurance-client-details.component';
+import { InsuranceClientCarsComponent } from '../../pages/insurance-client-cars/insurance-client-cars.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'cars/:id', component: CarsComponent},
     { path: 'details/:ref', component: DetailsComponent},
     { path: 'PatientCardetails/:ref/:id', component: MedicPatientDetailsComponent},
+    { path: 'InsuranceClientCars/:id', component: InsuranceClientCarsComponent},
+    { path: 'InsuranceClientCardetails/:ref/:id', component: InsuranceClientDetailsComponent},
     { path: 'PatientCars/:id', component: MedicPatientCarsComponent},
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'profile',   component: ClientsProfileComponent },
     { path: 'InsuranceProfile',   component: InsuranceProfileComponent },
     { path: 'MedicProfile',   component: MedicProfileComponent },
     { path: 'MedicPatients',   component: MedicPatientsComponent },
+    { path: 'InsuranceClients',   component: InsuranceClientsComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'companies',         component: CompaniesComponent },
     { path: 'insurances',         component: InsurancesComponent },

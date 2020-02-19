@@ -15,7 +15,7 @@ import { AuthLayoutComponent } from './dashboard/layouts/auth-layout/auth-layout
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TestComponent } from './sharedComponent/test/test.component';
-
+import { NgxAgoraModule } from 'ngx-agora';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
@@ -28,6 +28,7 @@ import { AddClientComponent } from './dashboard/pages/clients/add-client/add-cli
 import { UpdateClientComponent } from './dashboard/pages/clients/update-client/update-client.component';
 import { AddCarsComponent } from './dashboard/pages/clients/add-cars/add-cars.component';
 import { CarsComponent } from './dashboard/pages/clients/cars/cars.component';
+
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { CarsComponent } from './dashboard/pages/clients/cars/cars.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    NgxAgoraModule.forRoot({ AppID: environment.agora.appId }),
   ],
   providers: [],
   bootstrap: [AppComponent]

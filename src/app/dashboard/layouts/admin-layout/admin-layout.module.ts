@@ -34,6 +34,9 @@ import { MedicProfileComponent } from '../../pages/medic-profile/medic-profile.c
 import { MedicPatientsComponent } from '../../pages/medic-patients/medic-patients.component';
 import { MedicPatientCarsComponent } from '../../pages/medic-patient-cars/medic-patient-cars.component';
 import { MedicPatientDetailsComponent } from '../../pages/medic-patient-details/medic-patient-details.component';
+import { InsuranceClientsComponent } from '../../pages/insurance-clients/insurance-clients.component';
+import { InsuranceClientCarsComponent } from '../../pages/insurance-client-cars/insurance-client-cars.component';
+import { InsuranceClientDetailsComponent } from '../../pages/insurance-client-details/insurance-client-details.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -72,6 +75,9 @@ import { MedicPatientDetailsComponent } from '../../pages/medic-patient-details/
     MedicPatientsComponent,
     MedicPatientCarsComponent,
     MedicPatientDetailsComponent,
+    InsuranceClientsComponent,
+    InsuranceClientCarsComponent,
+    InsuranceClientDetailsComponent,
 
 
 

@@ -2,9 +2,9 @@
   <!-- Mask -->
   <span class="mask bg-gradient-danger opacity-8"></span>
 </div>
-<div [hidden]="clicked" class="container-fluid mt--7">
+<div class="container-fluid mt--7">
   <div class="row">
-    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0 yassine" *ngFor="let a of patients; let i=index">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0 yassine" *ngFor="let a of carList | async">
       <div class="card card-profile card-lift--hover shadow border-0">  
         <div class="row justify-content-center">
           <div class="col-lg-3 order-lg-2">
@@ -17,6 +17,7 @@
         </div>
         <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
           <div class="d-flex justify-content-between">
+            <button (click)="showinfo()" class="btn btn-sm btn-info mr-4">Edit</button>
           </div>
         </div>
         <div class="card-body pt-0 pt-md-4">
@@ -25,49 +26,40 @@
               <div class="card-profile-stats d-flex justify-content-center mt-md-5">
                 <div class="text-center">
                   <h3>
-                    Client {{i+1}}
+                    Insurance
                   </h3>
                   <div class="h5 mt-4">
-                    <i class="ni business_briefcase-24 mr-2"></i>Phone number: {{a.telephone}}
+                    <i class="ni business_briefcase-24 mr-2"></i>Name: {{a.assuranceName}}
                   </div>
                   <div>
-                    <i class="ni education_hat mr-2" style="font-size: 20px;"></i>Email: {{a.email}}
+                    <i class="ni education_hat mr-2" style="font-size: 20px;"></i>Email: {{a.assuranceEmail}}
                   </div>
-                  <br>
-                  <a href="javascript:void(0)" (click)="livechat()" class="btn btn-info">Call Patient</a>
                 </div>
               </div>
             </div>
           </div>
           <hr class="my-4" />
           <div class="text-center">
-            <h3>
-              {{a.name}} <span class="font-weight-light">, {{a.age}} </span>
-            </h3>
-            <div class="h5 font-weight-300">
-              <i class="ni location_pin mr-2"></i> {{a.city}} , {{a.country}}
-            </div>
-            <div class="h5 mt-4">
-              <i class="ni business_briefcase-24 mr-2"></i>Address: {{a.address}}
+            <div>
+              <h3>
+                {{a.nameDriver}} <span class="font-weight-light">,{{a.ageDriver}} </span>
+              </h3>
+              <div class="h5 font-weight-300">
+                <i class="ni location_pin mr-2"></i> {{a.cityDriver}} , {{a.countryDriver}}
+              </div>
+              <div class="h5 mt-4">
+                <i class="ni business_briefcase-24 mr-2"></i>Email: {{a.emailDriver}}
+              </div>
+              <div>
+                <i class="ni education_hat mr-2"></i>Phone number: {{a.telephoneDriver}}
+              </div>
             </div>
             <hr class="my-4" />
-            <a href="javascript:void(0)" [routerLink]="['/PatientCars/',a.id]">Show Details</a>
+            <a href="javascript:void(0)" [routerLink]="['/InsuranceClientCardetails/',a.ref,id]">Show more</a>
           </div>
         </div>
       </div>
     </div>
 
   </div>
-</div>
-<div [hidden]="!clicked">
-  <div [id]="localCallId" class="local">
-          <button (click)="hide()" class="btn btn-info btn-round">End Call</button>
-  </div>
-
-  <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote">
-  </div>
-  <!-- <br>
-  <div style="text-align: center;">
-       <button (click)="livechat()" class="btn btn-info btn-round">End Call</button> 
-  </div> -->
 </div>

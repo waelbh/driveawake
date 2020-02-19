@@ -36,6 +36,7 @@ export const ROUTESClient: RouteInfo[] = [
 ];
 export const ROUTESAssurance: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
+  { path: '/InsuranceClients', title: 'Clients',  icon:'ni-bullet-list-67 text-red', class: '' },
   { path: '/InsuranceProfile', title: 'Profile',  icon:'ni-single-02 text-red', class: '' },
 
  

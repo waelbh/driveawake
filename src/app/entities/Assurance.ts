@@ -7,5 +7,6 @@ export class Assurance {
     address?:any;
     country?:any;
     city?:any;
+    codePostal?:any;
     parrains:any[];
 }
