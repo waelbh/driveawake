@@ -12,7 +12,9 @@ import { HomeComponent } from '../../pages/home/home.component';
   imports: [
     CommonModule,
     RouterModule.forChild(AuthLayoutRoutes),
-    FormsModule
+    FormsModule,
+    NgbModule
+    
     // NgbModule
   ],
   declarations: [
