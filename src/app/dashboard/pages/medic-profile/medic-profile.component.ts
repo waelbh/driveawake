@@ -10,13 +10,15 @@ import { CompanyServices } from 'src/app/services/UserService/CompanyServices';
 export class MedicProfileComponent implements OnInit {
 
   medic:IntervenantMedicale=new IntervenantMedicale();
+  medicpatients:number = 0 ;
   constructor(private companyservices:CompanyServices) { }
 edit:boolean=true;
   ngOnInit() {
     let a =JSON.parse(localStorage.getItem('user'));
     console.log(a[0].roleRefId);
     this.companyservices.getIntMedicaleById(a[0].roleRefId).subscribe(data =>  {
-      this.medic = JSON.parse(JSON.stringify(data.data()));                   
+      this.medic = JSON.parse(JSON.stringify(data.data()));  
+this.medicpatients = this.medic.parrain.length;
     });
   }
   show(){
@@ -24,7 +26,7 @@ edit:boolean=true;
     console.log(this.edit);
   }
   submitAdding(){
-    //this.companyservices.updateClient(this.client);
+    this.companyservices.updateMedical(this.medic);
     this.edit=!this.edit;
   }
 
