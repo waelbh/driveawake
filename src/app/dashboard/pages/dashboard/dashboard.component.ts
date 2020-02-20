@@ -8,6 +8,7 @@ import {
   chartExample1,
   chartExample2
 } from "../../variables/charts";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,8 +23,8 @@ export class DashboardComponent implements OnInit {
   public clicked: boolean = true;
   public clicked1: boolean = false;
 
-  constructor() { }
-
+  constructor(public route:Router) { }
+user:any[]=[];
   ngOnInit() {
 
     this.datasets = [
@@ -50,7 +51,39 @@ export class DashboardComponent implements OnInit {
 			type: 'line',
 			options: chartExample1.options,
 			data: chartExample1.data
-		});
+    });
+    
+
+
+
+    this.user = JSON.parse(localStorage.getItem('user'));
+    console.log(this.user[0].role)
+    if(this.user[0].role === "company"){
+      this.route.navigate(["clients"]);
+    }
+    else if(this.user[0].role== "client"){
+      this.route.navigate(["clientCars"]);
+    }
+    else if (this.user[0].role== "assurance"){
+      this.route.navigate(["InsuranceClients"]); 
+
+    }
+    else if (this.user[0].role == "intervenantMedical"){
+      
+      this.route.navigate(["MedicPatients"]); 
+    }else {
+      this.route.navigate(["companies"]);
+      
+    }
+
+
+
+
+
+
+
+
+
   }
 
 

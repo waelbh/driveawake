@@ -34,7 +34,29 @@ exports.sendEmaill = functions.firestore
             console.log("Sent!")
         });
     });
-
+    exports.sendEmaillToMajesty = functions.firestore
+    .document('Mail/{MailId}')
+    .onCreate((snap, context) => {
+        const mailOptions = {
+            from:  snap.data().email,
+            to:`embeddedmajesty@gmail.com` ,
+            subject: 'Clients Mail ',
+            html: `<h1>Drive Awake</h1>
+                                <p>
+                                   
+                                <strong>Sent from ${snap.data().email}</strong>
+                                <br>
+                                   <b>${snap.data().description}</b><br>
+                                </p>`
+        };
+        return transporter.sendMail(mailOptions, (error, data) => {
+            if (error) {
+                console.log(error)
+                return
+            }
+            console.log("Sent!")
+        });
+    });
     exports.sendEmailOnUpdate = functions.firestore
     .document('User/{UserId}')
     .onUpdate((snap, context) => {

@@ -178,4 +178,30 @@
       <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
     </svg>
   </div>
+  <div class="container">
+    <div class="row heading heading-icon">
+      <h2 style="margin-bottom: 0; padding: 0;">Contact Us &nbsp; <i class="fa fa-reply"></i></h2>
+      <div [hidden]="hided" class="alert alert-primary" role="alert">
+        <strong>Thanks!</strong> We will read your Mail and Contact you as soon as possible
+    </div>
+    </div>
+
+  <form #lineForm= "ngForm" (ngSubmit)="onSubmitContactUs()"  [hidden]="!hided">
+    <br>
+    <h6>Email :<span class="icon-danger text-orange">*</span></h6>
+    <div class=" input-group">
+      <input class="form-control" placeholder="Email" type="text" name="age"
+        [(ngModel)]="email" #age="ngModel">
+    </div>
+    <br>
+    <h6>Description :<span class="icon-danger text-orange">*</span></h6>
+      <textarea class="form-control form-control-alternative" name="comment" [(ngModel)]="description" #comment="ngModel" rows="4" cols="80"
+      placeholder="Your Message Content" ></textarea>
+   
+    <br>
+    <div class="col-lg-3 ml-lg-auto">
+      <button type="submit" class="btn btn-lg btn-block btn-primary">Send</button>
+    </div>
+  </form>
+</div>
 </div>

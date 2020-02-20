@@ -11,7 +11,7 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
  
     { path: '/companies', title: 'Companies',  icon:'ni-bullet-list-67 text-red', class: '' },
-    { path: '/insurances', title: 'Insurances',  icon:'ni-tv-2 text-primary', class: '' },
+
    
 
 ];
@@ -38,7 +38,6 @@ export const ROUTESAssurance: RouteInfo[] = [
 
 ];
 export const ROUTESIntervenantMedicale: RouteInfo[] = [
-  { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
   { path: '/MedicPatients', title: 'Patients',  icon:'ni-bullet-list-67 text-red', class: '' },
   { path: '/MedicProfile', title: 'Profile',  icon:'ni-single-02 text-red', class: '' },
 
