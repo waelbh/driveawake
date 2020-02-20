@@ -20,7 +20,7 @@ declare const google: any;
 })
 export class InsuranceClientDetailsComponent implements OnInit {
 
-  private dataCar: any;
+  private dataCar: any ={};
   private alldataCar: any[] = [];
   private a: any = {};
   private dataDate: any;

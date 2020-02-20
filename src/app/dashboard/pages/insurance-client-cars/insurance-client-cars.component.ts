@@ -13,11 +13,14 @@ export class InsuranceClientCarsComponent implements OnInit {
 
   carList:Observable<any[]>;
   conducteur:Conducteur=new Conducteur();
+  currentuser:any= {};
   constructor( private route: ActivatedRoute, private companyservices: CompanyServices) { }
   id:any;
   ngOnInit() {
     this.id=this.route.snapshot.params.id;
-    this.carList=this.companyservices.getCarsbyClient(this.route.snapshot.params.id);
-
+    this.currentuser =JSON.parse( localStorage.getItem('user'));
+    console.log(this.currentuser)
+    this.carList=this.companyservices.getCarsbyClientAndinssures(this.id,this.currentuser[0].email);
+            
   }
 }
