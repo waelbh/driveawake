@@ -279,7 +279,32 @@ export const parseOptions = (parent, options) => {
 			}
 		}
 	}
-
+  export const chartExample1Hart = {
+    options: {
+      scales: {
+        yAxes: [{
+          gridLines: {
+            color: colors.gray[900],
+            zeroLineColor: colors.gray[900]
+          },
+          ticks: {
+            callback: function(value) {
+              if (!(value % 10)) {
+                return  value + ' BPM';
+              }
+            }
+          }
+        }]
+      }
+    },
+    data: {
+      labels: ['0', '1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13', '14', '15', '16', '17', '18', '19', '20','21','22','23'],
+      datasets: [{
+        label: 'Temp',
+        data: [0, 20, 10, 30, 15, 40, 20, 60, 60,70,80]
+      }]
+    }
+  }
 export const chartExample1 = {
   options: {
     scales: {
@@ -291,7 +316,7 @@ export const chartExample1 = {
         ticks: {
           callback: function(value) {
             if (!(value % 10)) {
-              return '$' + value + 'k';
+              return  value + ' °C';
             }
           }
         }
@@ -299,10 +324,10 @@ export const chartExample1 = {
     }
   },
   data: {
-    labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: ['0', '1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13', '14', '15', '16', '17', '18', '19', '20','21','22','23'],
     datasets: [{
-      label: 'Performance',
-      data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
+      label: 'Temp',
+      data: [0, 20, 10, 30, 15, 40, 20, 60, 60,70,80]
     }]
   }
 }

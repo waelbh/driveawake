@@ -4,6 +4,10 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { SuperAdminServices } from 'src/app/services/UserService/SuperAdminServices';
 import { CompanyServices } from 'src/app/services/UserService/CompanyServices';
+import { Conducteur } from 'src/app/entities/Conducteur';
+import { ActivatedRoute } from '@angular/router';
+import { Parain } from 'src/app/entities/Parrain';
+import { analytics } from 'firebase';
 @Component({
   selector: 'app-cars',
   templateUrl: './cars.component.html',
@@ -11,10 +15,23 @@ import { CompanyServices } from 'src/app/services/UserService/CompanyServices';
 })
 export class CarsComponent implements OnInit {
   closeResult: string;
-  ListCars:Observable<any[]>;
+  ListCars:any[]= [];
   carselected:any;
-  constructor(private modalService: NgbModal,private companyServices:CompanyServices) {
-    this.ListCars = this.companyServices.getCars();
+  currentclient:Parain= new Parain();
+  constructor(private modalService: NgbModal,private companyServices:CompanyServices,private route:ActivatedRoute) {
+  
+    this.companyServices.getParrainById(this.route.snapshot.params.id).subscribe(data => {
+
+      this.currentclient = JSON.parse(JSON.stringify(data.data()))
+        console.log(this.currentclient);
+    });
+
+
+  this.companyServices.getCarsByParrain(this.route.snapshot.params.id).subscribe(data => {
+    this.ListCars = data;
+    console.log(this.ListCars);
+
+    });
    }
 
   ngOnInit() {
@@ -22,8 +39,24 @@ export class CarsComponent implements OnInit {
   }
 
   delete(x){
+    if(!x.assurance){
+      this.companyServices.deleteCar(x,false,false);
+    }else {
+      let counter = 0;
+      for(let a of this.ListCars){
+        if(x.assuranceName === a.assuranceName){
+          counter = counter+ 1 ;
+        }
+      }
+      if(counter === 1){
+        this.companyServices.deleteCar(x,true,true);
+      }else {
+        this.companyServices.deleteCar(x,true,false);
+      }
+     
+    }
     console.log(x)
-    this.companyServices.deleteCar(x);
+   
   }
 
   open1(content) {

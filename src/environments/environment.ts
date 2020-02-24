@@ -13,6 +13,9 @@ export const environment = {
     messagingSenderId: "452758830538",
     appId: "1:452758830538:web:0cdb6de92374c3e8146333",
     measurementId: "G-XC3Q2B4ZBG"
+  },
+  agora: {
+    appId: '60be41652fa64d87ba6de43a0a745a82'
   }
 };
 

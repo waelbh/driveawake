@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title" id="modal-basic-title">New Client</h4>
+  <h4 class="modal-title" id="modal-basic-title">Add New Client</h4>
   <button type="button" class="close" aria-label="Close" (click)="close()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -31,11 +31,7 @@
       </div>
       <br>
 
-      <h6>Password <span class="icon-danger text-orange">*</span></h6>
-      <div class=" input-group">
-        <input class=" form-control" placeholder="Password" type="password" name="password"
-          [(ngModel)]="client.password" #password="ngModel">
-      </div>
+     
       <br>
 
       <!--<h6>Insurance <span class="icon-danger text-orange">*</span></h6>
@@ -50,6 +46,9 @@
             <option *ngFor="let x of ListInsurance | async" value="x">hello {{x.name}}</option>
           </select>
         </div> -->
+        <h4 class="modal-title" id="modal-basic-title">Medic Information</h4>
+        <br>
+        <br>
         <h6>Medic Name <span class="icon-danger text-orange">*</span></h6>
         <div class="input-group">
           <input class="form-control" type="text" placeholder="Title" name="Mname" [(ngModel)]="medic.name"
@@ -76,13 +75,7 @@
         </div>
         <br>
   
-        <h6>Medic Password <span class="icon-danger text-orange">*</span></h6>
-        <div class=" input-group">
-          <input class=" form-control" placeholder="Medic Password" type="password" name="Mpassword" [(ngModel)]="medic.password"
-            #Mpassword="ngModel">
   
-  
-        </div>
     </div>
     <div class="modal-footer">
       <button type="submit" class="btn btn-outline-primary" [disabled]="clientForm.invalid">Add</button>

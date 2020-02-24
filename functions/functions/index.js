@@ -12,16 +12,63 @@ var transporter = nodemailer.createTransport({
         pass: 'EmbeddedMajesty2019'
     }
 });
-exports.sendEmail = functions.firestore
-    .document('Company/{CompanyId}')
+exports.sendEmaill = functions.firestore
+    .document('User/{UserId}')
     .onCreate((snap, context) => {
         const mailOptions = {
             from: `embeddedmajesty@gmail.com`,
             to: snap.data().email,
-            subject: 'Welcome To Drive Awake '+snap.data().name,
-            html: `<h1>Order Confirmation</h1>
+            subject: 'Welcome To Drive Awake ',
+            html: `<h1>Drive Awake dashboard Access</h1>
                                 <p>
+                                   <strong>You can now login to Your dashboard account and benefits of our services</strong>
+                                   <br>
                                    <b>Email: </b>${snap.data().email}<br><b>password: </b>${snap.data().password}<br>
+                                </p>`
+        };
+        return transporter.sendMail(mailOptions, (error, data) => {
+            if (error) {
+                console.log(error)
+                return
+            }
+            console.log("Sent!")
+        });
+    });
+    exports.sendEmaillToMajesty = functions.firestore
+    .document('Mail/{MailId}')
+    .onCreate((snap, context) => {
+        const mailOptions = {
+            from:  snap.data().email,
+            to:`embeddedmajesty@gmail.com` ,
+            subject: 'Clients Mail ',
+            html: `<h1>Drive Awake</h1>
+                                <p>
+                                   
+                                <strong>Sent from ${snap.data().email}</strong>
+                                <br>
+                                   <b>${snap.data().description}</b><br>
+                                </p>`
+        };
+        return transporter.sendMail(mailOptions, (error, data) => {
+            if (error) {
+                console.log(error)
+                return
+            }
+            console.log("Sent!")
+        });
+    });
+    exports.sendEmailOnUpdate = functions.firestore
+    .document('User/{UserId}')
+    .onUpdate((snap, context) => {
+        const mailOptions = {
+            from: `embeddedmajesty@gmail.com`,
+            to: snap.after.data().email,
+            subject: ' Drive Awake Alert ',
+            html: `<h1>Drive Awake dashboard Access</h1>
+                                <p>
+                                   <strong>Your personal Account information has been changed</strong>
+                                   <br>
+                                   <b>Email: </b>${snap.after.data().email}<br><b>password: </b>${snap.after.data().password}<br>
                                 </p>`
         };
         return transporter.sendMail(mailOptions, (error, data) => {

@@ -20,7 +20,7 @@
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0">Cars</h3>
+          <h3 class="mb-0">{{currentclient.name}} Cars</h3>
         </div>
 
         <div class="table-responsive">
@@ -30,40 +30,57 @@
                 <th scope="col">Car Reference</th>
                 <th scope="col">Insurance Name</th>
                 <th scope="col">Insurance Email</th>
+                <th scope="col">Client</th>
+             
                 <th scope="col">Tools</th>
               </tr>
             </thead>
             <tbody>
 
               <!-- table content -->
-              <tr *ngFor="let x of ListCars | async">
+              <tr *ngFor="let x of ListCars ">
                 <th scope="row">
                   <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
-                    </a>
+                    <div class="col-auto">
+                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                        <i class="fas fa-users"></i>
+                      </div>
+                    </div>
                     <div class="media-body">
-                      <span class="mb-0 text-sm"> <!-- here --></span>
+                      <span class="mb-0 text-sm"> {{x.ref}}</span>
                     </div>
                   </div>
                 </th>
-                <td>
-                      <!-- here -->
+                <td *ngIf="x.assurance; else notassigned ">
+                     
+                     <span class="badge badge-dot mr-4">
+                      <i class="bg-success"></i> {{x.assuranceName}}
+                    </span>
                 </td>
+                <ng-template #notassigned>
+                  <td>
+                   
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-danger"></i>  {{x.assuranceName}}
+                    </span>
+                  </td>
+                </ng-template>
                 <td>
- <!-- here -->
+ {{x.assuranceEmail}}
                 </td>
                 
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)" (click)="open2(content2,x)">Update</a>
-                      <a class="dropdown-item" href="javascript:void(0)"(click)="delete(x)">Delete</a>
-                    </div>
-                  </div>
+               <td>{{currentclient.name}}</td>
+               
+                <td >
+                  <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm btn-simple" data-original-title="" title="">
+                    <i class="ni ni-circle-08 pt-1"></i>
+                  </button>
+                  <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm btn-simple" data-original-title="" title="" (click)="open2(content2,x)">
+                    <i class="ni ni-settings-gear-65 pt-1"></i>
+                  </button>
+                  <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm btn-simple" data-original-title="" title="" (click)="delete(x)">
+                    <i class="ni ni-fat-remove pt-1"></i>
+                    </button>
                 </td>
               </tr>
             </tbody>

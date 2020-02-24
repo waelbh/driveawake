@@ -1,0 +1,180 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+  <div class="container-fluid d-flex align-items-center">
+    <div class="row">
+      <div class="col-lg-7 col-md-10">
+        <h1 class="display-2 text-white" style="font-size: 36px !important;">Hello {{medic.name}} </h1>
+        <p class="text-white mt-0 mb-5">This is your profile page. You can see and update your information.</p>
+        <a href="javascript:void(0)" (click)="show()" class="btn btn-info">Edit profile</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+      <div class="card card-profile shadow">
+        <div class="row justify-content-center">
+          <div class="col-lg-3 order-lg-2">
+            <div class="card-profile-image">
+              <a href="javascript:void(0)">
+                <img src="assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+          <div class="d-flex justify-content-between">
+
+          </div>
+        </div>
+        <div class="card-body pt-0 pt-md-4">
+          <div class="row">
+            <div class="col">
+              <div class="card-profile-stats d-flex justify-content-center mt-md-5">
+                <div>
+                  <span class="heading"> {{medicpatients}} </span>
+                  <span class="description">Patients</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <hr class="my-4">
+          <div class="text-center">
+            <h3>
+              {{medic.name}} <span class="font-weight-light">, {{medic.age}} </span>
+            </h3>
+            <div class="h5 font-weight-300">
+              <i class="ni location_pin mr-2"></i> {{medic.city}} , {{medic.country}}
+            </div>
+            <div class="h5 mt-4">
+              <i class="ni business_briefcase-24 mr-2"></i>Email: {{medic.email}}
+            </div>
+            <div>
+              <i class="ni education_hat mr-2"></i>Phone Number: {{medic.telephone}}
+            </div>
+            <hr class="my-4" />
+            <a href="javascript:void(0)">Show Patients</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">My account</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form #medicForm="ngForm" (ngSubmit)="submitAdding()">
+            <h6 class="heading-small text-muted mb-4">Your information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="username">Username</label>
+                    <input type="text" id="username" class="form-control form-control-alternative"
+                      placeholder="Username" name="name" value="{{medic.name}}" [(ngModel)]="medic.name" #name="ngModel"
+                      [disabled]="edit">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-email">Email address</label>
+                    <input type="email" id="input-email" class="form-control form-control-alternative"
+                      placeholder="jesse@example.com" value="{{medic.email}}" [disabled]="edit"
+                      [(ngModel)]="medic.email" name="email" #email="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">First name</label>
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative"
+                      placeholder="First name" value="{{medic.firstName}}" [disabled]="edit"
+                      [(ngModel)]="medic.firstName" name="firstName" #firstName="ngModel">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Last name</label>
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative"
+                      placeholder="Last name" value="{{medic.lastName}}" [disabled]="edit"
+                      [(ngModel)]="medic.lastName" name="lastName" #lastName="ngModel">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-age">Age</label>
+                    <input type="text" id="input-age" class="form-control form-control-alternative"
+                      placeholder="age" value="{{medic.age}}" [disabled]="edit"
+                      [(ngModel)]="medic.age" name="age" #age="ngModel">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Contact information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-phone">Phone Number</label>
+                    <input id="input-phone" class="form-control form-control-alternative" placeholder="Phone number"
+                      value="{{medic.telephone}}" type="text" name="phone" [disabled]="edit" [(ngModel)]="medic.telephone"
+                      #phone="ngModel">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Address</label>
+                    <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address"
+                      value="{{medic.address}}" name="address" type="text" [disabled]="edit" [(ngModel)]="medic.address"
+                      #address="ngModel">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-city">City</label>
+                    <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City"
+                      value="{{medic.city}}" name="city" [disabled]="edit" [(ngModel)]="medic.city" #city="ngModel">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Country</label>
+                    <input type="text" id="input-country" class="form-control form-control-alternative"
+                      placeholder="Country" [disabled]="edit" value="{{medic.country}}"
+                      [(ngModel)]="medic.country" name="country" #country="ngModel">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-country">Postal code</label>
+                    <input type="number" id="input-postal-code" class="form-control form-control-alternative"
+                      placeholder="Postal code" name="code" [disabled]="edit" [(ngModel)]="medic.postalCode" #code="ngModel">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Description -->
+            <div [hidden]="edit" class="text-center">
+              <button type="submit" class="btn btn-outline-primary" [disabled]="medicForm.invalid">Confirm</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

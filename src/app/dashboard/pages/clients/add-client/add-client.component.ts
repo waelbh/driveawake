@@ -47,7 +47,7 @@ console.log(a[0].roleRefId);
     this.companyservices.getCompanyById(a[0].roleRefId).subscribe(data =>  {
       this.Company = JSON.parse(JSON.stringify(data.data()));
       this.companyservices.addClient(this.Company,this.client,this.medic);
- 
+      
       this.closing.emit(true);
     });
   

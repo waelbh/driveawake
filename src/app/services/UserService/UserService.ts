@@ -9,7 +9,10 @@ import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { User } from 'src/app/entities/User';
 import { map, catchError } from 'rxjs/operators';
-
+export class Mail{
+  email:any;
+  description:any;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +23,12 @@ export class UserService {
   insuranceCollection: AngularFirestoreCollection<Assurance>;
   InterMedicalesCollection: AngularFirestoreCollection<IntervenantMedicale>;
   ClientCollection: AngularFirestoreCollection<Parain>;
+  MailCollection:AngularFirestoreCollection<Mail>;
 
   constructor(private db: AngularFirestore) {
     this.SuperAdminsCollection = this.db.collection('SuperAdmins');
     this.CompanyCollection = this.db.collection('Company');
+    this.MailCollection = this.db.collection('Mail');
 
   }
 
@@ -46,6 +51,10 @@ export class UserService {
     );
     return Companies; 
   }
+
+ createMail(mail:Mail){
+  this.MailCollection.add(JSON.parse(JSON.stringify(mail)));
+ }
   
 
 }

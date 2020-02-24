@@ -1,4 +1,4 @@
-<nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white" id="sidenav-main">
+<nav class="navbar navbar-vertical navbar-expand-md navbar-light bg-white " id="sidenav-main">
   <div class="container-fluid">
     <!-- Toggler -->
     <button class="navbar-toggler" type="button" (click)="isCollapsed=!isCollapsed"
@@ -6,8 +6,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Brand -->
-    <a class="navbar-brand my-nav-brand" routerLinkActive="active" [routerLink]="['/dashboard']">
-      <img src="./assets/img/brand/logooooooopng.png" class="navbar-brand-img" alt="...">
+    <a class="navbar-brand " routerLinkActive="active" >
+      <img src="../../../../assets/img/brand/logo.png"  style="height: 5rem;" class="navbar-brand-img" alt="...">
     </a>
     <!-- User -->
     <ul class="nav align-items-center d-md-none">
@@ -88,7 +88,12 @@
         </div>
       </form>
       <!-- Navigation -->
-      <ul class="navbar-nav">
+      <hr class="my-4" >
+      <!-- Heading -->
+
+     <h6 class="navbar-heading text-muted"> <i class="fas fa-wrench" style="font-size: large !important;color: orangered !important;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TOOLS</h6>
+     <hr class="my-4" >
+      <ul class="navbar-nav ">
           <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
               <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
                   <i class="ni {{menuItem.icon}}"></i>
@@ -96,7 +101,34 @@
               </a>
           </li>
       </ul>
-     
+      <hr class="my-4" >
+      <!-- Heading -->
+      <h6 class="navbar-heading text-muted"> <i class="far fa-address-book" style="font-size: large !important;color: orangered !important;"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</h6>
+      <!-- Navigation -->
+      <hr class="my-4" >
+      <ul class="navbar-nav mb-md-3">
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.facebook.com/">
+            <i class="fab fa-facebook text-blue"></i> Facebook
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.instagram.com/">
+            <i class="fab fa-instagram text-red"></i>Instagram
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://mail.google.com">
+            <i class="fab fa-google-plus-g text-orange"></i>Gmail
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/">
+            <i class="fab fa-github-square text-black"></i>Github
+          </a>
+        </li>
+       
+      </ul>
     </div>
   </div>
 </nav>

@@ -2,8 +2,12 @@ export class Conducteur {
     id:any;
     ref:any;
     refParrain:any;
-    assuranceEmail:any;
-    assuranceName:any;
+    assurance:any;
+    assurancestatiqueName?:any;
+    assurancestatiqueEmail?:any;
+    dynamicassurance:boolean;
+  
+   
     nameDriver?:any;
     emailDriver?:any;
     telephoneDriver?:any;

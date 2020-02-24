@@ -4,8 +4,11 @@ export class IntervenantMedicale {
     password:any;
     name:any;
     Telephone:any;
-    address:any;
-    country:any;
-    city:any;
+    firstName?:any;
+    lastName?:any;
+    address?:any;
+    country?:any;
+    city?:any;
+    codePostal?:any;
     parrain:any[];
 }

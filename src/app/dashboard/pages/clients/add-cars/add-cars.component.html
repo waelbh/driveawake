@@ -17,20 +17,21 @@
 
       <h6>Insurance <span class="icon-danger text-orange">*</span></h6>
       <div class=" input-group">
+        <label>Assign Company Insurances</label> &nbsp;&nbsp;
         <label class="custom-toggle">
-          <input type="checkbox" [(ngModel)]="checkState" name="checkState">
+         <input type="checkbox" [(ngModel)]="checkState" name="checkState">
           <span class="custom-toggle-slider rounded-circle"></span>
         </label>
       </div>
       <div class="input-group" [hidden]="!checkState">
-        <select class=" form-control" name="insurance" [(ngModel)]="car.assurance">
-          <option *ngFor="let x of ListInsurance | async" value="x">{{x.name}}</option>
+        <select class=" form-control" name="insurance" [(ngModel)]="selectedInsurance.id">
+          <option *ngFor="let x of ListInsurance | async" value="{{x.id}}">{{x.name}}</option>
         </select>
       </div>
       <div class="input-group" [hidden]="checkState">
         <h6>Name <span class="icon-danger text-orange">*</span></h6>
         <div class="input-group">
-          <input class="form-control" type="text" placeholder="Title" name="Iname" [(ngModel)]="insurance.name"
+          <input class="form-control" type="text" placeholder="Title" name="Iname" [(ngModel)]="Newinsurance.name"
             #Iname="ngModel">
         </div>
 
@@ -38,7 +39,7 @@
 
         <h6>Email <span class="icon-danger text-orange">*</span></h6>
         <div class=" input-group">
-          <input class=" form-control" placeholder="Email" type="email" name="Iemail" [(ngModel)]="insurance.email"
+          <input class=" form-control" placeholder="Email" type="email" name="Iemail" [(ngModel)]="Newinsurance.email"
             #Iemail="ngModel">
         </div>
 
