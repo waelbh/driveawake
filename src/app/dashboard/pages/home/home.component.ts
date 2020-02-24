@@ -29,4 +29,8 @@ export class HomeComponent implements OnInit {
     this.hided = false;
   }
 
+  scroll() {
+    document.getElementById("contact-us").scrollIntoView();
+  }
+
 }

@@ -1,3 +1,65 @@
+.my-bgg {
+  background-color: whitesmoke;
+}
+
+
+
+.background-f {
+  background: url("../../../../assets/img/home/background-f.jpg");
+  background-size: cover;
+  height: 50rem;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+
+
+.my-link {
+  color:#525f7f !important;
+  cursor: pointer;
+}
+
+
+
+.my-content {
+
+}
+
+.content-img {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+
+.my-main-text {
+  position: absolute;
+  width: 35%;
+  background-color: rgba(255,255,255,0.9);
+  top:25%;
+  left:5%;
+  padding: 2rem;
+}
+.my-main-text-r {
+  display: none;
+  
+}
+
+
+@media only screen and (max-width: 600px) {
+  .my-main-text {
+    display: none;
+    width: 80%;
+  }
+  .my-main-text-r {
+    display: inline;
+  }
+
+  .background-f {
+    background-size: cover;
+    height: 10rem;
+  }
+}
+
 .my-carousel {
     object-fit: cover;
 }
@@ -194,4 +256,51 @@ ul{
 }
 .our-webcoderskull .cnt-block .follow-us li .fa:hover{ 
    color:#025a8e;
+}
+.contact-us-form {
+  display: flex;
+  justify-content: center;
+
+}
+
+
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 13rem;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: white;
+  color: black;
+  transform: rotateY(180deg);
 }
